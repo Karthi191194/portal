@@ -1,0 +1,7 @@
+/*global*/
+.error {color: red;}
+
+/*post*/
+.post-field {padding-bottom: 0px !important; padding-left: 0px !important;}
+.post-table{ margin-top: 5px; width: 100%}
+.post-hndle{ border-bottom: 1px solid #eee;}
