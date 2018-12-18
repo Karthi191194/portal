@@ -1,0 +1,111 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form>
+    <div class="checkbox">
+      <label><input type="checkbox" class="1" id="" name="">#1</label>
+    </div>
+    <div class="form-group">
+      <select class="1">
+        <option>--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+	</div>  
+
+	    <div class="checkbox">
+      <label><input type="checkbox" class="2" id="" name="">#2</label>
+    </div>
+    <div class="form-group">
+      <select class="2">
+        <option>--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+	</div>  
+	
+	    <div class="checkbox">
+      <label><input type="checkbox" class="3" id="" name="">#3</label>
+    </div>
+    <div class="form-group">
+      <select class="3">
+        <option>--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+	</div>  
+	
+		    <div class="checkbox">
+      <label><input type="checkbox" class="4" id="" name="">#4</label>
+    </div>
+    <div class="form-group">
+      <select class="4">
+        <option>--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+	</div>  
+	
+<button type="submit" name="save" id="save">SAVE</button>	
+</form>
+<script>
+$(document).ready(function($){
+	$("select").hide();
+
+	$("input[type='checkbox']").change(function(){ 	
+		var elt = $(this)[0]; 
+		var elt_class = $(elt).attr('class'); 
+		var target_elt = $("select."+elt_class)		
+		if($(elt).is(":checked")){			
+			target_elt.show();
+		}else{
+			target_val = target_elt.val();
+			$("select."+elt_class).prop('selectedIndex',0);
+			$('select').each(function() {
+				$('select').find('option[value="' + target_val + '"]').prop('disabled', false); 
+			});
+			$("select."+elt_class).hide();
+		}
+	});
+	
+	/*$('select').change(function() { 
+
+		var value = $(this).val();
+    $("div select").children('option').each(function(elt) {
+		console.log(elt);
+        if ( $(this).val() === value ) {
+            $(this).attr('disabled', true).siblings().removeAttr('disabled');   
+        }
+    });
+	
+});*/
+	$('select').on('change', function() {    
+		$('select').find('option').prop('disabled', false);
+		$('select').each(function(i, elt) {
+			$('select').not(this).find('option[value="' + this.value + '"]').prop('disabled', true); 
+		});   
+	});
+});
+</script>
+</body>
+<html>

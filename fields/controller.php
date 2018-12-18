@@ -22,13 +22,15 @@ class FieldsController{
 	}
 	
 	public function list_all(){
-		$fields = $this->model->all_fields();
+		/*$fields = $this->model->all_fields();
 		//echo "<pre>"; print_r($fields);
 		if(isset($_GET['field']) && isset($_GET['action']) && $_GET['action'] == "delete"){
 			die("delete...");
 		}
-		include(FILE_VIEW_LIST_FIELDS);
+		include(FILE_VIEW_LIST_FIELDS);*/
+		
+		include(FILE_VIEW_LIST_TABLE_FIELDS);
 	}
-	
 
 }
+?>

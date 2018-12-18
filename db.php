@@ -13,7 +13,7 @@ function portal_tables(){
 	dbDelta( $sql );
 	
 	$table_name_fields = $wpdb -> prefix .'portal_fields';
-	$sql = "CREATE TABLE $table_name_fields (field_id INT(11) AUTO_INCREMENT PRIMARY KEY, field_type VARCHAR(255) NOT NULL, field_label VARCHAR(255) NOT NULL, field_placeholder VARCHAR(255) NOT NULL, required INT(1), 	field_options LONGTEXT) $charset_collate;";
+	$sql = "CREATE TABLE $table_name_fields (field_id INT(11) AUTO_INCREMENT PRIMARY KEY, field_type VARCHAR(255) NOT NULL, field_label VARCHAR(255) NOT NULL, field_placeholder VARCHAR(255) NOT NULL,  field_options LONGTEXT) $charset_collate;";
 	dbDelta( $sql );
 	
 	$table_name_fieldsmapped = $wpdb -> prefix .'portal_fields_mapped';

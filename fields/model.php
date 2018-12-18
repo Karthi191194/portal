@@ -16,18 +16,14 @@ class FieldsModel{
 		$field_type = $data['type'];
 		$field_label = $data['label'];
 		$field_placeholder = $data['placeholder'];
-		if(isset($data['required'])){
-			$required = $data['required']; 
-		}else{
-			$required = 0;
-		}
+
 		if($field_type == "radio" || $field_type == "checkbox" || $field_type == "select"){	
 			$field_options = $data['options'];
 		}else{
 			$field_options = "";
 		}
 				
-		$status = $this->db->insert( $this->table_name, array( 'field_type' => $field_type, 'field_label' => $field_label, 'field_placeholder' => $field_placeholder, 'required' => $required,'field_options' => $field_options), array('%s','%s','%s','%d' ,'%s') );
+		$status = $this->db->insert( $this->table_name, array( 'field_type' => $field_type, 'field_label' => $field_label, 'field_placeholder' => $field_placeholder, 'field_options' => $field_options), array('%s','%s','%s' ,'%s') );
 		
 		if($status == 1){
 			$error['status'] = 1;
@@ -45,7 +41,7 @@ class FieldsModel{
 			$fields = $this->db->get_results( "SELECT field_id, field_label FROM $this->table_name" );
 			return $fields; // return id and label values
 		}else{
-			$fields = $this->db->get_results( "SELECT * FROM $this->table_name" );
+			$fields = $this->db->get_results( "SELECT * FROM $this->table_name", ARRAY_A );
 			return $fields; // all values
 		}
 	}
